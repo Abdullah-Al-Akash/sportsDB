@@ -48,7 +48,8 @@ const showTeamDetails = (data, name) => {
         const mainTeamContainer = document.getElementById('main-team-container');
         const div = document.createElement('div');
         div.innerHTML = `
-                <h2 class="text-center m-5">Teams of <span class="text-danger">${name}</span> </h2>
+                <div class="text-end mt-2"><button class="btn btn-dark" onclick="reload()">Back</button></div>
+                <h2 class="text-center mb-5">Teams of <span class="text-danger">${name}</span> </h2>
         `
         mainTeamContainer.appendChild(div);
         teams.forEach(team => {
@@ -69,5 +70,10 @@ const showTeamDetails = (data, name) => {
                 leaguesContainer.textContent = '';
                 teamsContainer.appendChild(div);
         })
+}
+
+// Reload Full Page:
+function reload() {
+        location.reload();
 }
 
