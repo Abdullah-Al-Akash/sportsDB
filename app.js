@@ -52,7 +52,7 @@ const showTeamDetails = (data, name) => {
         const mainTeamContainer = document.getElementById('main-team-container');
         const div = document.createElement('div');
         div.innerHTML = `
-                <div class="text-end mt-2"><button class="btn btn-dark" onclick="reload()">Back</button></div>
+                <div class="text-end mt-2 container"><button class="btn btn-dark" onclick="reload()">Back</button></div>
                 <h2 class="text-center mb-2">Teams of <span class="text-danger">${name}</span> </h2>
                 <h5 class="text-center mb-5">Total Team: <span class="text-danger"> ${teams.length}</span> </h5>
         `
@@ -62,7 +62,8 @@ const showTeamDetails = (data, name) => {
         teams.forEach(team => {
                 const div = document.createElement('div');
                 div.innerHTML = `
-                <div class="col">
+                <div class="mt-5 pt-4">
+                        <div class="col">
                         <div class="card h-100">
                                 <img src="${team.strStadiumThumb}" class="card-img-top" alt="...">
                                 <div class="card-body">
@@ -70,6 +71,7 @@ const showTeamDetails = (data, name) => {
                                         <p class="card-text text-success">Short Name: ${team.strTeamShort}</p>
                                         <p class="card-text">${team.strDescriptionEN.slice(0, 100)}</p>
                                 </div>
+                        </div>
                         </div>
                 </div>
                 `
