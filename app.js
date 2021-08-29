@@ -10,23 +10,62 @@ const loadLeague = async () => {
 
 }
 loadLeague()
+const leaguesContainer = document.getElementById('league');
 const showLeague = (leagues) => {
         // console.log(leagues);
-        const leaguesContainer = document.getElementById('league');
         leagues.forEach(league => {
-                console.log(league);
+                // console.log(league);
                 const div = document.createElement('div');
                 div.innerHTML = `
                         <div class="col">
                                 <div class="card h-100 bg-info">
                                         <div class="card-body">
                                         <h5 class="card-title">ID: ${league.idLeague}</h5>
-                                        <h3 class="text-danger">${league.strLeague}</h3>
-                                        <h4>Sport Type: ${league.strSport}</h4>
-                                        </div>
-                                </div>
-                        </div>
-                `;
+                                        <h4 class="text-danger">${league.strLeague}</h4>
+                                        <h6>Sport Type: ${league.strSport}</h6>
+                                        <br/><button onclick="loadTeamDetails(${league.idLeague}, '${league.strLeague}')"class="btn btn-danger">Show Details</button>
+                                        </div >
+                                </div >
+                        </div >
+        `;
                 leaguesContainer.appendChild(div);
         })
 }
+
+const loadTeamDetails = (id, name) => {
+        fetch(`https://www.thesportsdb.com/api/v1/json/1/lookup_all_teams.php?id=${id}`)
+                .then(res => res.json())
+                .then(data => showTeamDetails(data, name))
+}
+
+const showTeamDetails = (data, name) => {
+        console.log(data, name);
+        const teams = data.teams;
+
+        const teamsContainer = document.getElementById('teams');
+        const mainTeamContainer = document.getElementById('main-team-container');
+        const div = document.createElement('div');
+        div.innerHTML = `
+                <h2 class="text-center m-5">Teams of <span class="text-danger">${name}</span> </h2>
+        `
+        mainTeamContainer.appendChild(div);
+        teams.forEach(team => {
+
+                const div = document.createElement('div');
+                div.innerHTML = `
+                <div class="col">
+                        <div class="card h-100">
+                                <img src="${team.strStadiumThumb}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                        <h5 class="card-title text-warning">${team.strAlternate}</h5>
+                                        <p class="card-text text-success">Short Name: ${team.strTeamShort}</p>
+                                        <p class="card-text">${team.strDescriptionEN.slice(0, 100)}</p>
+                                </div>
+                        </div>
+                </div>
+                `
+                leaguesContainer.textContent = '';
+                teamsContainer.appendChild(div);
+        })
+}
+
