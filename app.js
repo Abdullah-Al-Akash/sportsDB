@@ -18,7 +18,7 @@ const showLeague = (leagues) => {
                 const div = document.createElement('div');
                 div.innerHTML = `
                         <div class="col">
-                                <div class="card h-100 bg-info">
+                                <div class="card h-100 card-bg">
                                         <div class="card-body">
                                         <h5 class="card-title">ID: ${league.idLeague}</h5>
                                         <h4 class="text-danger">${league.strLeague}</h4>
@@ -39,21 +39,27 @@ const loadTeamDetails = (id, name) => {
 }
 
 const showTeamDetails = (data, name) => {
+        window.scrollTo(0, 40);
         console.log(data, name);
         const teams = data.teams;
-
+        // Main Header Bg None:
         const header = document.getElementById('header');
         header.style.display = 'none';
+
         const teamsContainer = document.getElementById('teams');
+
+        //For Teams Headline
         const mainTeamContainer = document.getElementById('main-team-container');
         const div = document.createElement('div');
         div.innerHTML = `
                 <div class="text-end mt-2"><button class="btn btn-dark" onclick="reload()">Back</button></div>
-                <h2 class="text-center mb-5">Teams of <span class="text-danger">${name}</span> </h2>
+                <h2 class="text-center mb-2">Teams of <span class="text-danger">${name}</span> </h2>
+                <h5 class="text-center mb-5">Total Team: <span class="text-danger"> ${teams.length}</span> </h5>
         `
         mainTeamContainer.appendChild(div);
-        teams.forEach(team => {
 
+        // ForEach Function For All Teams
+        teams.forEach(team => {
                 const div = document.createElement('div');
                 div.innerHTML = `
                 <div class="col">
@@ -69,6 +75,7 @@ const showTeamDetails = (data, name) => {
                 `
                 leaguesContainer.textContent = '';
                 teamsContainer.appendChild(div);
+                teamsContainer.scrollTop = 0;
         })
 }
 
