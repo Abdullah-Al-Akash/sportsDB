@@ -15,18 +15,19 @@
 </head>
 
 <body>
-        <section id="header" class="fixed-top">
-                <div class="d-flex justify-content-center align-items-center h-100">
-                        <h1 class="text-success">All National <span class="text-danger">League</span> Details</h1>
+        <section class="container">
+                <div id="header" class="fixed-top">
+                        <div class="d-flex align-items-center h-100 ms-3">
+                                <h2 class="text-success fw-bold">All National <br> <span
+                                                class="text-danger ms-5">League</span> <br>
+                                        <span class="text-info ms-5 ps-5">Details</span>
+                                </h2>
+                        </div>
                 </div>
         </section>
         <!-- Dynamic Value -->
-        <section class="container main-section">
-                <!-- League Details -->
-                <div id="league" class="row row-cols-1 row-cols-md-3 g-4 pt-5">
 
-                </div>
-
+        <section class="container">
                 <!-- Team Details -->
                 <div id="main-team-container">
 
@@ -34,6 +35,14 @@
                 <div id="teams" class="row row-cols-1 row-cols-md-3 g-4">
 
                 </div>
+        </section>
+        <section class="container main-section">
+                <!-- League Details -->
+                <div id="league" class="row row-cols-1 row-cols-md-3 g-4 pt-5">
+
+                </div>
+
+
         </section>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

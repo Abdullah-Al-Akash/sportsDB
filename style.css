@@ -1,9 +1,12 @@
 #header {
-        background-image: url(images/bg.png);
+        background-image: url(images/bg-main.png);
         height: 40vh;
+        /* background-size: 60% 40vh; */
         background-size: cover;
         background-repeat: no-repeat;
         border: 3px solid black;
+        background-position: center;
+        background-color: white;
 }
 
 .main-section {

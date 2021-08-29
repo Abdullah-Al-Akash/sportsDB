@@ -42,6 +42,8 @@ const showTeamDetails = (data, name) => {
         console.log(data, name);
         const teams = data.teams;
 
+        const header = document.getElementById('header');
+        header.style.display = 'none';
         const teamsContainer = document.getElementById('teams');
         const mainTeamContainer = document.getElementById('main-team-container');
         const div = document.createElement('div');
